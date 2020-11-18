@@ -1,0 +1,60 @@
+<div class="container">
+
+  <div class="col todo">
+    <h2>To Do List!</h2>
+    <form [formGroup]="form" (ngSubmit)="processForm()">
+
+      <div class="form-group">
+        <label for="">Description: </label>
+        <input type="text" id="description"  formControlName="description" placeholder="Eg. Exercise">
+        <div *ngIf="form.get('description').hasError('required')" class="text-danger">Please enter a description</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="priority">Priority: </label>
+        <input type="radio" name="priority" id="high" value="high" formControlName="priority">High
+        <input type="radio" name="priority" id="medium" value="medium" formControlName="priority">Medium
+        <input type="radio" name="priority" id="low" value="low" formControlName="priority">Low
+        <div *ngIf="form.get('priority').hasError('required')" class="text-danger">Please enter a priority level</div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="date">Due: </label>
+        <input type="date" id="date" formControlName="date">
+        <div *ngIf="form.get('date').hasError('dateIsBefore') " class="text-danger">Please enter a valid date</div>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid">Add Task</button>
+      
+    </form>
+  </div>
+
+  <div class="col tasks">
+    <h2>Tasks</h2>
+
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Date Due</th>
+      </tr>
+      <tr *ngFor="let task of taskList; let i = index">
+        <td>
+          {{ i+1 }}
+        </td>
+        <td>
+            {{ task.description}}
+        </td>
+        <td>
+            {{ task.priority }}
+        </td>
+        <td>
+            {{ task.date }}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>

@@ -1,0 +1,32 @@
+.text-danger {
+    color:red
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+.form-group {
+    margin: 1em 0;
+}
+.col {
+    width: 50%;
+    padding: 1em;
+}
+
+.todo {
+    background: beige
+}
+
+.tasks {
+    background: paleturquoise
+}
+
+.tasks table {
+    width: 100%;
+    text-align: center;
+}
+
+th {
+    border-bottom: black 1px solid;
+}
